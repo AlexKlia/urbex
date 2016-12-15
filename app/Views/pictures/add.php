@@ -19,6 +19,15 @@
         <input type="text" name="geo" id="geo" class="form-control" placeholder="Emplacement géographique">
         <input type="submit" name="submit" value="Ajouter une image">
     </div>
+
+
+
 </form>
 
 <?php $this->stop('main_content'); ?>
+
+<?php $this-> start('map')?>
+    <div id="map">
+
+    </div>
+<?php $this-> stop('map')?>

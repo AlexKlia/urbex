@@ -5,12 +5,20 @@
 	<title><?= $this->e($title) ?></title>
 
     <link rel="stylesheet" href="<?= $this->assetUrl('css/bootstrap.min.css') ?>">
-    <script src="<?= $this->assetUrl('js/bootstrap.min.js') ?>"></script>
-    <script src="<?= $this->assetUrl('js/script.js') ?>"></script>
     <script
             src="https://code.jquery.com/jquery-3.1.1.min.js"
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
             crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyAzIhfO2Fr7beUdTpXogwie0L1YDMbP3hE" async defer></script>
+    <script src="<?= $this->assetUrl('js/bootstrap.min.js') ?>"></script>
+    <script src="<?= $this->assetUrl('js/script.js') ?>"></script>
+    <style>
+        #map {
+            width: 600px;
+            height: 200px;
+        }
+    </style>
+
 </head>
 <body>
     <section>
@@ -23,8 +31,13 @@
 
 		<section>
 			<?= $this->section('main_content') ?>
-		</section>
 
+		</section>
+        <section>
+            <?= $this->section('map') ?>
+
+
+        </section>
 		<footer>
 		</footer>
 	</div>
