@@ -14,6 +14,16 @@
     </div>
 <?php endif; ?>
 
+<?php if (isset($_SESSION['flash'])) : ?>
+
+    <?php foreach($_SESSION['flash'] as $key => $message) : ?>
+        <div class="alert alert-<?= $key ?>">
+            <?= $message ?>
+        </div>
+    <?php endforeach; ?>
+
+<?php unset($_SESSION['flash']); endif; ?>
+
 <form action="" method="POST">
     <div class="form-group">
         <label for="email">Email</label>
@@ -27,5 +37,6 @@
 
     <button type="submit" name="submit" class="btn btn-default">Connexion</button>
     <button class="btn btn-default"><a href="<?= $this->url('users_sign_in') ?>">Inscription</a></button>
-</form>
+</form><br>
+<a href="<?= $this->url('user_password_recovery') ?>">Mot de passe oubliée ?</a>
 <?php $this->stop('main_content') ?>
