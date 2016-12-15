@@ -18,13 +18,11 @@ class PicturesModel extends Model
 {
     public function latestPictures($offset, $nb)
     {
+        $nb = (int)$nb;
 
-
-        $nb =(int)$nb;
-
-        $sql ='SELECT pictures.id, pictures.title, pictures.descr, users.username, pictures.url, pictures.local, pictures.date, pictures.id_user, users.id '.
-            'FROM `pictures` INNER JOIN users WHERE users.id = pictures.id_user' .
-            ' ORDER BY pictures.date DESC LIMIT :limit OFFSET :offset ';
+        $sql = 'SELECT pictures.id, pictures.title, pictures.descr, users.username, pictures.url, pictures.local, pictures.date, COUNT(votes.id_user) AS nbVote FROM `pictures`' .
+            'INNER JOIN users ON users.id = pictures.id_user left join votes ON votes.id_picture = pictures.id group by pictures.id' .
+            ' ORDER BY pictures.date DESC LIMIT :limit OFFSET :offset';
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':offset', $offset, PDO::PARAM_INT);
         $sth->bindParam(':limit', $nb, PDO::PARAM_INT);
@@ -33,12 +31,30 @@ class PicturesModel extends Model
         return $sth->fetchAll();
     }
 
-    public function CountPictures(){
-        $sql= 'SELECT COUNT(id) AS nb FROM pictures';
+    public function CountPictures()
+    {
+        $sql = 'SELECT COUNT(id) AS nb FROM pictures';
         $result = $this->dbh->query($sql);
         $row = $result->fetch();
         return $row['nb'];
+    }
 
+    public function getVotes()
+    {
+        $sql='SELECT pictures.id, pictures.title, pictures.descr, users.username, pictures.url, pictures.local, pictures.date, votes.id_user, votes.id_picture FROM `pictures`'.
+            'INNER JOIN users ON users.id = pictures.id_user left join votes ON votes.id_picture = pictures.id ';
+        $result = $this->dbh->query($sql);
+        $row = $result->fetchAll();
+        return $row;
 
+    }
+
+    public function getNbVotes($id)
+    {
+        $sql = 'SELECT COUNT(*) FROM votes WHERE id_picture=:id';
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetchColumn(0);
     }
 }

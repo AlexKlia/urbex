@@ -2,11 +2,15 @@
 
 <?php $this->start('main_content')?>
     <?php foreach ($allPictures as $picture): ?>
-    <div class="row">
+    <div class="row" data-id="<?= $picture['id'] ?>">
+        <input type="hidden" id="ajax_operation_route" value="<?=$this->url('pictures_ajax_operation')?>">
         <div class="col-md-1">
-            <button type="button" class="btn btn-default" aria-label="Left Align">
+            <button type="button" name="vote" data-picture-id="<?= $picture['id'] ?>" class="vote btn btn-default" aria-label="Left Align">
                 <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
             </button>
+            <br>
+            <!--<p><?/*=$picture['nbVote']*/?></p>-->
+            <p class="nbVote"></p>
         </div>
 
         <div class="col-md-3">
@@ -26,17 +30,21 @@
     <nav aria-label="Page navigation">
         <ul class="pagination">
             <li>
-                <a href="page/<?=$i-1?>"" aria-label="Previous">
+                <?php if($page>1): ?>
+                <a href="/urbex/urbex/public/accueil/page/<?=$page-1?>" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
+                <?php endif ?>
             </li>
         <?php for($i = 1; $i<=$nbPages; $i++):?>
-            <li><a href="page/<?=$i?>">Page <?=$i?></a></li>
+            <li><a href="/urbex/urbex/public/accueil/page/<?=$i?>">Page <?=$i?></a></li>
         <?php endfor; ?>
             <li>
-                <a href="#" aria-label="Next">
+                <?php if($page < $nbPages): ?>
+                <a href="/urbex/urbex/public/accueil/page/<?=$page+1?>"" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
+                <?php endif ?>
             </li>
         </ul>
     </nav>
