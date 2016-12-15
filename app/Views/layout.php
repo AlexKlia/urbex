@@ -5,6 +5,7 @@
 	<title><?= $this->e($title) ?></title>
 
     <link rel="stylesheet" href="<?= $this->assetUrl('css/bootstrap.min.css') ?>">
+    <link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
     <script src="<?= $this->assetUrl('js/bootstrap.min.js') ?>"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
