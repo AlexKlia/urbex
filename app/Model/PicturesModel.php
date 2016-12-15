@@ -12,5 +12,13 @@ use W\Model\Model;
 
 class PicturesModel extends Model
 {
+    public function disctinct()
+    {
+        $sql = 'SELECT DISTINCT local FROM pictures';
+        $sth = $this->dbh->prepare($sql);
+        $sth->execute();
+
+        return $sth->fetchAll();
+    }
 
 }

@@ -16,8 +16,13 @@
         <textarea name="description" id="descr" cols="30" rows="10" class="form-control">
         </textarea>
         <label>Image : </label><input type="file" name="url"  id="url">
-        <input type="text" name="geo" id="geo" class="form-control" placeholder="Emplacement géographique">
+
+        <div class="ui-widget">
+            <input type="text" name="geo" id="geo" class="form-control" placeholder="Emplacement géographique">
+            <label for="geo">Tags: </label>
+        </div>
         <input type="submit" name="submit" value="Ajouter une image">
+        <input type="hidden" id="path" value="<?= $this->url('pictures_ajax-operation'); ?> ">
     </div>
 
 

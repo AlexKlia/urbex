@@ -17,7 +17,7 @@ class PicturesController extends Controller
     public function add()
     {
 
-        $error[]='';
+        $error;
         $add='';
         if (isset($_POST['submit']))
         {
@@ -101,7 +101,7 @@ class PicturesController extends Controller
 
                             $picturesModel=new PicturesModel();
                             $picturesModel->insert($add);
-                            print_r($add);
+
                             $this->show('pictures/add');
 
                         }
@@ -115,7 +115,23 @@ class PicturesController extends Controller
                 print_r($error);
             }
         }else $this->show('pictures/add');
+    }
 
+    public function geo()
+    {
+        $picturesModel=new PicturesModel();
+        $array=$picturesModel->disctinct();
+        $arrayGeo='';
+        foreach ($array as $key=>$value)
+        {
+
+                $arrayGeo[]=$value['local'];
+
+            /*print_r($arrayGeo);*/
+        }
+
+        $this->showJson($arrayGeo);
+        /*print_r($arrayGeo);*/
 
     }
 }
