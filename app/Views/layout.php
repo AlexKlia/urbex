@@ -8,6 +8,21 @@
     <link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
     <script src="<?= $this->assetUrl('js/bootstrap.min.js') ?>"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initialize&key=AIzaSyAzIhfO2Fr7beUdTpXogwie0L1YDMbP3hE" async defer></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="<?= $this->assetUrl('js/script.js') ?>"></script>
+    <style>
+        #map {
+            width: 600px;
+            height: 200px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -42,7 +57,13 @@
 
 		<section>
 			<?= $this->section('main_content') ?>
+
 		</section>
+
+        <section>
+            <?= $this->section('map') ?>
+
+        </section>
 
 		<footer>
 		</footer>

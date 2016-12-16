@@ -269,7 +269,6 @@ abstract class Model
 		// Supprime les caractères superflus en fin de requète
 		$sql = substr($sql, 0, -2);
 		$sql .= ')';
-
 		$sth = $this->dbh->prepare($sql);
 		foreach($data as $key => $value){
 			$value = ($stripTags) ? strip_tags($value) : $value;
