@@ -46,14 +46,14 @@ class PicturesController extends Controller
         if(isset($_POST['pictureId']) && ctype_digit($_POST['pictureId']))
         {
             $voteModel = new VotesModel();
-            $vote = $voteModel->search(['id_user' => 1, 'id_picture' => $_POST['pictureId']], 'AND');
+            $vote = $voteModel->search(['id_user' => [$_SESSION]['user']['username'], 'id_picture' => $_POST['pictureId']], 'AND');
 
             if(empty($vote)){
                 /*$id = $voteModel->insert([
                     'id_user' => 1,
                     'id_picture' => $_POST['pictureId']
                 ]);*/
-                $voteModel->insert(1,$_POST['pictureId']);
+                $voteModel->insert([$_SESSION]['user']['username'],$_POST['pictureId']);
             }
             $nbVotes = $picturesModel->getNbVotes($_POST['pictureId']);
             $this->showJson(['success'=> true, 'nbVote'=>$nbVotes]);
