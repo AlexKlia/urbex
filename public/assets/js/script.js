@@ -1,7 +1,7 @@
-/**
-     * Created by Etudiant on 14/12/2016.
-     */
-$(function() {
+
+$(function(){
+
+
     initialize();
     function initialize() {
         geocoder = new google.maps.Geocoder();
@@ -37,7 +37,6 @@ $(function() {
 
 
     var url = $('#path').val();
-    var array;
     $.ajax({
         url : url,
         method: 'POST',
@@ -55,10 +54,4 @@ $(function() {
     });
 
 
-
-
-
-
-
 });
-
