@@ -1,12 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Etudiant
- * Date: 14/12/2016
- * Time: 10:05
- */ ?>
+$data = [
+    'title' => 'Ajout d\'image',
+    'script' => $this->assetUrl('js/script.js')
+];
+?>
 
-<?php $this->layout('layout', ['title' => "Ajout d'image"]); ?>
+<?php $this->layout('layout',$data);?>
+
 <?php $this->start('main_content'); ?>
 
 
