@@ -26,8 +26,21 @@
         </div>
         <div class="col-md-8">
                 <h2><?= $picture['title']?></h2>
+
                 <p><?= $picture['descr']?></p>
                 <p>Posté par: <?= $picture['username']?></p>
+
+            <?php if (isset($_SESSION['user'])) : ?>
+
+                <?php if ($_SESSION['user']['role'] == 'Admin') : ?>
+                    <form action="" method="POST">
+                        <input type="text" name="pictureId" value="<?= $picture['id'] ?>" hidden>
+                        <button type="submit" name="delete" class="btn btn-default">Supprimer</button>
+                    </form>
+                <?php endif; ?>
+
+            <?php endif; ?>
+
 
         </div>
 

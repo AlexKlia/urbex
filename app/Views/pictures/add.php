@@ -31,7 +31,7 @@ $data = [
 <?php $this->stop('main_content'); ?>
 
 <?php $this-> start('map')?>
-    <div id="map">
+    <div id="map" class="col col-sm-8" style="height: 250px; padding: 0;">
 
     </div>
 <?php $this-> stop('map')?>

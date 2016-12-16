@@ -17,6 +17,12 @@ class PicturesController extends Controller
     public function displayAccueil($page = 1)
     {
         $picturesModel = new PicturesModel();
+
+        if (isset($_POST['delete']))
+        {
+            $picturesModel->deletePics($_POST['pictureId']);
+        }
+
         $picture = $picturesModel->latestPictures($page - 1, 10);
 
         $countPicture = $picturesModel->CountPictures();
@@ -26,6 +32,8 @@ class PicturesController extends Controller
         if ($page < 1) {
             $page = 1;
         }
+
+
 
         $this->show('pictures/lastPictures', ['allPictures' => $picture, 'nbPages' => $nbPages, 'page' => $page]);
 
@@ -56,7 +64,7 @@ class PicturesController extends Controller
 
         public function add()
         {
-            $this->allowTo('User');
+            $this->allowTo(['User','Admin','Moderator']);
 
             $error;
             $add = '';

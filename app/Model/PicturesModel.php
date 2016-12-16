@@ -74,4 +74,17 @@ class PicturesModel extends Model
         return $stmt->fetchColumn(0);
     }
 
+    public function deletePics($pictureId)
+    {
+        $sql = 'DELETE FROM votes WHERE id_picture = :id';
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->bindParam(':id', $pictureId);
+        $stmt->execute();
+
+        $sql = 'DELETE FROM pictures WHERE pictures.id = :id';
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->bindParam(':id', $pictureId);
+        $stmt->execute();
+    }
+
 }
