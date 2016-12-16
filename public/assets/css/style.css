@@ -2,10 +2,16 @@ div img.img-responsive{
     padding-top: 40px;
 }
 
-/*div.row button.btn btn-default{
-    padding-top: 40px;
-}*/
-
-body{
+body {
     background-color: #ecf0f1;
+}
+
+.alert.alert-danger h3 {
+    margin: 0;
+    padding: 0px 0px 20px;
+}
+
+#map {
+    width: 600px;
+    height: 200px;
 }
