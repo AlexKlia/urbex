@@ -43,8 +43,8 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a href="#">Urbex Pics</a></li>
-                        <li><a href="#">Partager</a></li>
-                        <li><a href="#">A propos</a></li>
+                        <li><a href="<?= $this->url('pictures_add') ?>">Partager</a></li>
+                        <li><a href="<?= $this->url('default_about') ?>">A propos</a></li>default_about
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->

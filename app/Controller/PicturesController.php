@@ -14,6 +14,11 @@ use W\Controller\Controller;
 
 class PicturesController extends Controller
 {
+    public function __construct()
+    {
+        $this->allowTo('User');
+    }
+
     public function add()
     {
 

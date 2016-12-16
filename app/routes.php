@@ -10,5 +10,6 @@
         ['GET|POST',	'/user/reset-password/[:token]',	 'Users#resetPassword',	                'user_reset_password'],
         ['GET|POST',    '/add',                              'Pictures#add',                        'pictures_add'],
         ['GET|POST',    '/ajax-operation',                   'Pictures#geo',                        'pictures_ajax-operation'],
+        ['GET',         '/about',                            'Default#about',                       'default_about'],
 
 	);

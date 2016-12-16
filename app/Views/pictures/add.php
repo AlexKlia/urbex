@@ -13,8 +13,7 @@
 <form action="#" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <input type="text" name="title" placeholder="Titre de l'image" class="form-control" id="title">
-        <textarea name="description" id="descr" cols="30" rows="10" class="form-control">
-        </textarea>
+        <textarea name="description" id="descr" cols="30" rows="10" class="form-control"></textarea>
         <label>Image : </label><input type="file" name="url"  id="url">
 
         <div class="ui-widget">
